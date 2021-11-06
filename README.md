@@ -43,7 +43,7 @@ This part requires creating the following window :
 
 Here is the Code : <br>
 ```dialog1.h```
-```
+```cpp
 #include <QWidget>
 #include<QLineEdit>
 #include<QLabel>
@@ -65,8 +65,8 @@ protected:
     QPushButton* search;
 };
 ```
-```dialog1.h```
-```
+```dialog1.cpp```
+```cpp
 #include "dialog1.h"
 #include"QHBoxLayout"
 
