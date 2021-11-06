@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
 ```
 
 ## Nested Layouts
-Just as widgets can contain other widgets, layouts can be used to provide different levels of grouping for widgets. Here, we want to display a label alongside a line edit at the top-let of a window, above two checkBox buttons, and display two pushButtons at the top-right of the window, as follow.
+Just as widgets can contain other widgets, layouts can be used to provide different levels of grouping for widgets. Here, we want to display a label alongside a line edit at the top-left of a window, above two checkBox buttons, and display two pushButtons at the top-right of the window, as follow.
 
 <p align="center">
   <img align="center" src="https://user-images.githubusercontent.com/72691265/140610460-439a00e3-0f15-4519-80c6-19a2b95753a7.png">
@@ -263,11 +263,6 @@ As a final task in this homework, we will visit an important layout, the [QGridL
 
 ```calculator.h```
 ```cpp
-protected:
-    void createWidgets();
-    void placeWidgets();
-    void makeConnections();
-
 protected:
     QVBoxLayout *layout;        //main layout for the button
     QGridLayout* grid;
