@@ -137,20 +137,6 @@ protected:
 ```
 ```dialog2.cpp```
 ```cpp
-void Dialog2::createWidgets(){
-
-    this->setWindowTitle("NestedLayout test");
-    
-    name = new QLabel("Name:");
-    edit = new QLineEdit();
-
-    search = new QPushButton("Search");
-    close = new QPushButton("Close");
-
-    b1 = new QCheckBox("Match case");
-    b2 = new QCheckBox("Search backward");
-
-}
 void Dialog2::placeWidgets(){
     auto mainLayout = new QHBoxLayout();
     auto topLeftLayout = new QHBoxLayout();
@@ -227,7 +213,6 @@ void bugForm::createWidgets(){
     submit = new QPushButton("Submit Bug Report");
     cancel = new QPushButton("Don't Submit");
 }
-
 void bugForm::placeWidgets(){
 
     auto mainLayout = new QVBoxLayout();
