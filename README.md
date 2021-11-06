@@ -5,14 +5,14 @@
 </p>
 
 ## Table of content 
-  * [Getting Started](#general-info)
-     * [About the homework](#intro)
+  * [Getting Started](#getting-started)
+     * [About the homework](#about-the-homework)
      * [Requirements](#setup)
-  * [Experimenting with QHBoxLayout](#HL)
-  * [Nested Layouts](#nestedL)
-  * [Bug report Form](#report)
-  * [Grid Layout](#grid)
-  * [Conclusion](#sum)   
+  * [Experimenting with QHBoxLayout](#experimenting-with-QHBoxLayout)
+  * [Nested Layouts](#nested-layouts)
+  * [Bug report Form](#bug-report-form)
+  * [Grid Layout](#grid-layout)
+  * [Conclusion](#conclusion)   
   
   ## Getting Started
   ### About the homework :
