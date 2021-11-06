@@ -122,22 +122,7 @@ Just as widgets can contain other widgets, layouts can be used to provide differ
 
 ```dialog2.h```
 ```cpp
-#include <QWidget>
-#include<QLineEdit>
-#include<QLabel>
-#include<QPushButton>
-#include<QCheckBox>
-
-class Dialog2 : public QWidget
-{
-public:
-    explicit Dialog2(QWidget *parent = nullptr);
-
-protected:
-    void createWidgets();
-    void placeWidgets();
-    void makeConnections();
-
+//include, constructor and methods go here.
 protected:
     QLineEdit* edit;
 
@@ -152,21 +137,10 @@ protected:
 ```
 ```dialog2.cpp```
 ```cpp
-#include "dialog2.h"
-#include<QHBoxLayout>
-#include<QVBoxLayout>
-
-Dialog2::Dialog2(QWidget *parent) : QWidget(parent)
-{
-    createWidgets();
-    placeWidgets();
-    makeConnections();
-}
-
 void Dialog2::createWidgets(){
 
     this->setWindowTitle("NestedLayout test");
-
+    
     name = new QLabel("Name:");
     edit = new QLineEdit();
 
@@ -199,9 +173,8 @@ void Dialog2::placeWidgets(){
 
     this->setLayout(mainLayout);
 }
-
 void Dialog2::makeConnections(){
-    connect(close, &QPushButton::clicked, this, exit);
+connect(close, &QPushButton::clicked, this, exit);
 }
 ```
 
@@ -213,23 +186,6 @@ The goal of this part is to create a form to report a Bug problem as follow :
 
 ```bugform.h```
 ```cpp
-#include <QWidget>
-#include<QFormLayout>
-#include<QLineEdit>
-#include<QTextEdit>
-#include<QComboBox>
-#include<QPushButton>
-
-class bugForm : public QWidget
-{
-public:
-    explicit bugForm(QWidget *parent = nullptr);
-
-protected:
-    void createWidgets();
-    void placeWidgets();
-    void makeConnections();
-
 protected:
     QFormLayout* formLayout;
 
@@ -249,17 +205,6 @@ protected:
 ```
 ```bugform.cpp```
 ```cpp
-#include "bugform.h"
-#include<QVBoxLayout>
-#include<QHBoxLayout>
-
-bugForm::bugForm(QWidget *parent) : QWidget(parent)
-{
-    createWidgets();
-    placeWidgets();
-    makeConnections();
-}
-
 void bugForm::createWidgets(){
 
     this->setWindowTitle("Report Bug");
@@ -281,7 +226,6 @@ void bugForm::createWidgets(){
     reset = new QPushButton("Reset");
     submit = new QPushButton("Submit Bug Report");
     cancel = new QPushButton("Don't Submit");
-
 }
 
 void bugForm::placeWidgets(){
@@ -308,7 +252,6 @@ void bugForm::placeWidgets(){
 
     this->setLayout(mainLayout);
 }
-
 void bugForm::makeConnections(){}
 ```
 
@@ -320,17 +263,6 @@ As a final task in this homework, we will visit an important layout, the [QGridL
 
 ```calculator.h```
 ```cpp
-#include <QWidget>
-#include<QGridLayout>
-#include<QLCDNumber>
-#include<QPushButton>
-#include <QVector>
-
-class Calculator : public QWidget
-{
-public:
-    explicit Calculator(QWidget *parent = nullptr);
-
 protected:
     void createWidgets();
     void placeWidgets();
@@ -409,7 +341,7 @@ void Calculator::makeConnections(){}
 
 ## Conclusion
 To sum up, understanding layouts management is fundamental when it comes to creating user-friendly, engaging designs, particularly in the realms of web design and advertising. <br>
-In this lab, we have only created the forms. In the next lab, we will implement functional windows. :fire: :fire: :fire:
+In this lab, we have only created the forms. In the next lab, we will implement functional windows. :fire: :fire: :fire: :octocat:
 
 
 
