@@ -1,4 +1,4 @@
-<h1 align="center">Homework Fun With Layout</h1>
+<h1 align="center">Fun With Layout</h1>
 
 <p align="center">
   <img align="center" width="70%" height="60%" src="https://user-images.githubusercontent.com/72691265/140589171-2bfe87fc-c738-442e-b0d5-9f2cfecd1139.png"/>
@@ -322,39 +322,3 @@ void Calculator::makeConnections(){}
 ## Conclusion
 To sum up, understanding layouts management is fundamental when it comes to creating user-friendly, engaging designs, particularly in the realms of web design and advertising. <br>
 In this lab, we have only created the forms. In the next lab, we will implement functional windows. :fire: :fire: :fire: :octocat:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
