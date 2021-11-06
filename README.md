@@ -1,4 +1,4 @@
-<h1 align="center">Fun With Layout</h1>
+<h1 align="center">Fun With Layouts</h1>
 
 <p align="center">
   <img align="center" width="70%" height="60%" src="https://user-images.githubusercontent.com/72691265/140589171-2bfe87fc-c738-442e-b0d5-9f2cfecd1139.png"/>
