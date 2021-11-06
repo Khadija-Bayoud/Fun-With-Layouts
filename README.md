@@ -318,7 +318,6 @@ void Calculator::placeWidgets(){
 
 void Calculator::makeConnections(){}
 ```
-
 ## Conclusion
 To sum up, understanding layouts management is fundamental when it comes to creating user-friendly, engaging designs, particularly in the realms of web design and advertising. <br>
 In this lab, we have only created the forms. In the next lab, we will implement functional windows. :fire: :fire: :fire: :octocat:
