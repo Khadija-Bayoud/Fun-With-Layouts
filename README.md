@@ -18,7 +18,7 @@
   
   ### About the homework
   
-  Qt includes a set of layout management classes that are used to describe how widgets are laid out in an application's user interface. These layouts automatically position   and   resize widgets when the amount of space available for them changes, ensuring that they are consistently arranged and that the user interface as a whole remains usable. Check the   full documentation [here](https://doc.qt.io/qt-5/layout.html). <br>
+  Qt includes a set of layout management classes that are used to describe how widgets are laid out in an application's user interface. These layouts automatically position   and resize widgets when the amount of space available for them changes, ensuring that they are consistently arranged and that the user interface as a whole remains usable. Check the   full documentation [here](https://doc.qt.io/qt-5/layout.html). <br>
 The goal of this homework is to apply the gained knowledge in C++ to create and manipulate forms.
   
   ### Requirements
@@ -96,6 +96,322 @@ void Dialog1::placeWidget(){
 
 void Dialog1::makeConnexion(){}
 ```
+
+```main.cpp```
+```cpp
+#include <QApplication>
+#include"dialog1.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+
+    Dialog1* diag = new Dialog1();
+    diag->show();
+
+    return a.exec();
+}
+```
+
+## Nested Layouts
+Just as widgets can contain other widgets, layouts can be used to provide different levels of grouping for widgets. Here, we want to display a label alongside a line edit at the top-let of a window, above two checkBox buttons, and display two pushButtons at the top-right of the window, as follow.
+
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/72691265/140610460-439a00e3-0f15-4519-80c6-19a2b95753a7.png">
+</p>
+
+```dialog2.h```
+```cpp
+#include <QWidget>
+#include<QLineEdit>
+#include<QLabel>
+#include<QPushButton>
+#include<QCheckBox>
+
+class Dialog2 : public QWidget
+{
+public:
+    explicit Dialog2(QWidget *parent = nullptr);
+
+protected:
+    void createWidgets();
+    void placeWidgets();
+    void makeConnections();
+
+protected:
+    QLineEdit* edit;
+
+    QLabel* name;
+
+    QCheckBox* b1;
+    QCheckBox* b2;
+
+    QPushButton* search;
+    QPushButton* close;
+};
+```
+```dialog2.cpp```
+```cpp
+#include "dialog2.h"
+#include<QHBoxLayout>
+#include<QVBoxLayout>
+
+Dialog2::Dialog2(QWidget *parent) : QWidget(parent)
+{
+    createWidgets();
+    placeWidgets();
+    makeConnections();
+}
+
+void Dialog2::createWidgets(){
+
+    this->setWindowTitle("NestedLayout test");
+
+    name = new QLabel("Name:");
+    edit = new QLineEdit();
+
+    search = new QPushButton("Search");
+    close = new QPushButton("Close");
+
+    b1 = new QCheckBox("Match case");
+    b2 = new QCheckBox("Search backward");
+
+}
+void Dialog2::placeWidgets(){
+    auto mainLayout = new QHBoxLayout();
+    auto topLeftLayout = new QHBoxLayout();
+    auto leftLayout = new QVBoxLayout();
+    auto rightLayout = new QVBoxLayout();
+
+    topLeftLayout->addWidget(name);
+    topLeftLayout->addWidget(edit);
+
+    leftLayout->addLayout(topLeftLayout);
+    leftLayout->addWidget(b1);
+    leftLayout->addWidget(b2);
+
+    rightLayout->addWidget(search);
+    rightLayout->addWidget(close);
+    rightLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Expanding));
+
+    mainLayout->addLayout(leftLayout);
+    mainLayout->addLayout(rightLayout);
+
+    this->setLayout(mainLayout);
+}
+
+void Dialog2::makeConnections(){
+    connect(close, &QPushButton::clicked, this, exit);
+}
+```
+
+## Bug Report Form
+The goal of this part is to create a form to report a Bug problem as follow :
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/72691265/140612096-33e375ed-b878-456e-bb19-b0b556fb56e7.png">
+</p>
+
+```bugform.h```
+```cpp
+#include <QWidget>
+#include<QFormLayout>
+#include<QLineEdit>
+#include<QTextEdit>
+#include<QComboBox>
+#include<QPushButton>
+
+class bugForm : public QWidget
+{
+public:
+    explicit bugForm(QWidget *parent = nullptr);
+
+protected:
+    void createWidgets();
+    void placeWidgets();
+    void makeConnections();
+
+protected:
+    QFormLayout* formLayout;
+
+    QLineEdit* name;
+    QLineEdit* company;
+    QLineEdit* phone;
+    QLineEdit* email;
+    QLineEdit* bug;
+    QTextEdit* summary;
+
+    QComboBox* reproducibility;
+
+    QPushButton* reset;
+    QPushButton* submit;
+    QPushButton* cancel;
+};
+```
+```bugform.cpp```
+```cpp
+#include "bugform.h"
+#include<QVBoxLayout>
+#include<QHBoxLayout>
+
+bugForm::bugForm(QWidget *parent) : QWidget(parent)
+{
+    createWidgets();
+    placeWidgets();
+    makeConnections();
+}
+
+void bugForm::createWidgets(){
+
+    this->setWindowTitle("Report Bug");
+
+    formLayout = new QFormLayout;
+
+    name = new QLineEdit();
+    company = new QLineEdit();
+    phone = new QLineEdit();
+    email = new QLineEdit();
+    bug = new QLineEdit();
+    summary = new QTextEdit();
+
+    reproducibility = new QComboBox();
+    reproducibility->addItem("Always");
+    reproducibility->addItem("Sometimes");
+    reproducibility->addItem("Rarely");
+
+    reset = new QPushButton("Reset");
+    submit = new QPushButton("Submit Bug Report");
+    cancel = new QPushButton("Don't Submit");
+
+}
+
+void bugForm::placeWidgets(){
+
+    auto mainLayout = new QVBoxLayout();
+    auto layout = new QHBoxLayout();
+
+    formLayout->addRow("Name:", name);
+    formLayout->addRow("Company:", company);
+    formLayout->addRow("Phone:", phone);
+    formLayout->addRow("Email:", email);
+    formLayout->addRow("Problem Title:", bug);
+    formLayout->addRow("Summary Information:", summary);
+    formLayout->addRow("Reproducibility:", reproducibility);
+
+    layout->addWidget(reset);
+    layout->addSpacerItem(new QSpacerItem(200, 20, QSizePolicy::Expanding));
+    layout->addWidget(submit);
+    layout->addWidget(cancel);
+
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(reproducibility);
+    mainLayout->addLayout(layout);
+
+    this->setLayout(mainLayout);
+}
+
+void bugForm::makeConnections(){}
+```
+
+## Grid Layout
+As a final task in this homework, we will visit an important layout, the [QGridLayout](https://doc.qt.io/qt-5/qgridlayout.html) , to create the following calculator:
+<p align="center">
+  <img align="center" src="https://user-images.githubusercontent.com/72691265/140612550-43631b18-1e3e-4bed-8b47-82d7436af069.png">
+</p>
+
+```calculator.h```
+```cpp
+#include <QWidget>
+#include<QGridLayout>
+#include<QLCDNumber>
+#include<QPushButton>
+#include <QVector>
+
+class Calculator : public QWidget
+{
+public:
+    explicit Calculator(QWidget *parent = nullptr);
+
+protected:
+    void createWidgets();
+    void placeWidgets();
+    void makeConnections();
+
+protected:
+    QVBoxLayout *layout;        //main layout for the button
+    QGridLayout* grid;
+    QLCDNumber* number;
+
+    QVector<QPushButton*> digits;  //Vector for the digits
+    QVector<QPushButton*> operations; //operation buttons
+    QPushButton *enter; // enter button
+};
+```
+```calculator.cpp```
+```cpp
+void Calculator::createWidgets(){
+
+    this->setWindowTitle("NumericKeypad");
+
+    //Creating the layouts
+    layout = new QVBoxLayout();
+    layout->setSpacing(2);
+
+    //grid layout
+    grid = new QGridLayout();
+
+    //LCD number
+    number = new QLCDNumber();
+    number->setDigitCount(9);
+    number->setMinimumHeight(80);
+
+    //creating the buttons
+    for(int i=0; i < 10; i++)
+    {
+        digits.push_back(new QPushButton(QString::number(i)));
+        digits.back()->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        digits.back()->resize(sizeHint().width(), sizeHint().height());
+    }
+
+    //enter button
+    enter = new QPushButton("Enter",this);
+    enter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    enter->resize(sizeHint().width(), sizeHint().height());
+
+    //operatiosn buttons
+    operations.push_back(new QPushButton("+"));
+    operations.push_back(new QPushButton("-"));
+    operations.push_back(new QPushButton("*"));
+    operations.push_back(new QPushButton("/"));
+}
+
+void Calculator::placeWidgets(){
+
+    layout->addWidget(number);
+    layout->addLayout(grid);
+
+    //adding the buttons
+    for(int i=1; i <10; i++)
+        grid->addWidget(digits[i], (i-1)/3, (i-1)%3);
+
+    //Adding the operations
+    for(int i=0; i < 4; i++)
+        grid->addWidget(operations[i], i, 4);
+
+    //Adding the 0 button
+    grid->addWidget(digits[0], 3, 0);
+    grid->addWidget(enter, 3, 1, 1,2);
+
+    this->setLayout(layout);
+}
+
+void Calculator::makeConnections(){}
+```
+
+## Conclusion
+To sum up, understanding layouts management is fundamental when it comes to creating user-friendly, engaging designs, particularly in the realms of web design and advertising. <br>
+In this lab, we have only created the forms. In the next lab, we will implement functional windows. :fire: :fire: :fire:
+
+
 
 
 
