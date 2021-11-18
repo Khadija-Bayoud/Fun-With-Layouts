@@ -28,7 +28,7 @@ Follow the instructions in the [installation guide](https://doc.qt.io/qt-5/getti
 If you want to test your configuration:
 1. Launch QtCreator.
 2. Create a new project.
-3. Specify ```No Qt project```
+3. Specify ```No Qt project``
 4. For the configuration choose ```cmake```
 5. If you use ```git```, you can choose it to manage your program versions.
 6. Build your program.
