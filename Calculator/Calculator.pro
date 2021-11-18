@@ -1,4 +1,4 @@
-QT += widgets
+QT += widgets 
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -18,3 +18,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     calculator.h
+    
